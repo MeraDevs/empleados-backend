@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.provedatos.interview.models.entities.DatosLaborales;
 import com.provedatos.interview.models.entities.Empleado;
+import com.provedatos.interview.models.entities.Provincia;
 import com.provedatos.interview.services.EmpleadoService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,6 +44,13 @@ public class EmpleadoController {
         DatosLaborales datosLaborales = empleadoService.obtenerInfoLaboralPorEmpleado(empleadoId);
 
         return ResponseEntity.ok(datosLaborales);
+    }
+
+    @GetMapping("/provincias")
+    public ResponseEntity<List<Provincia>> listarProvincias() {
+        List<Provincia> provincias = empleadoService.listarProvincias();
+
+        return ResponseEntity.ok(provincias);
     }
 
     @PostMapping("/nuevo-empleado")

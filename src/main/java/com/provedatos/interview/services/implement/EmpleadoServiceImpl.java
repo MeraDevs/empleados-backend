@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.provedatos.interview.models.entities.DatosLaborales;
 import com.provedatos.interview.models.entities.Empleado;
+import com.provedatos.interview.models.entities.Provincia;
 import com.provedatos.interview.repositories.DatosLaboralesRepository;
 import com.provedatos.interview.repositories.EmpleadoRepository;
+import com.provedatos.interview.repositories.ProvinciaRepository;
 import com.provedatos.interview.services.EmpleadoService;
 
 @Service
@@ -20,6 +22,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Autowired
     private DatosLaboralesRepository datosLaboralesRepository;
+
+    @Autowired
+    private ProvinciaRepository provinciaRepository;
+
 
     @Override
     public List<Empleado> listarTodo() {
@@ -61,6 +67,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
         datosLaborales.setEmpleado(empleado);
         return datosLaboralesRepository.save(datosLaborales);
+    }
+
+    @Override
+    public List<Provincia> listarProvincias() {
+        return provinciaRepository.findAll();
     }
 
 }
