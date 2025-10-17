@@ -2,6 +2,7 @@ package com.provedatos.interview.models.entities;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -57,7 +58,8 @@ public class Empleado {
 
     @Lob
     @Column(name = "foto_perfil", columnDefinition = "LONGBLOB")
-    private byte[] avatar;
+    @JsonIgnore
+    private byte[] fotoPerfil;
 
     @ManyToOne
     private Provincia provincia;
